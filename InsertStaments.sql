@@ -1,0 +1,17 @@
+INSERT INTO OAO_DEVELOPMENT.summary_repo_example
+(SERVICE,
+SITE,
+MONTH,
+METRIC_NAME_SUBMITTED,
+VALUE,
+UPDATE_TIME,
+PREMIER_REPORTING_PERIOD,
+UPDATE_USER)
+VALUES('Lab',
+	    'MSB',
+ 	    TO_DATE('2020-01-01','YYYY-MM-DD'),
+	    'Troponin (<=50 min)',
+	     0.8913,
+	    TO_DATE('2020-02-18','YYYY-MM-DD'),
+	    'Jan 2020',
+	    'NA');
