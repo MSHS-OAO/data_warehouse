@@ -1,3 +1,5 @@
+/* Basic insert statment*/
+
 INSERT INTO OAO_DEVELOPMENT.summary_repo_example
 (SERVICE,
 SITE,
@@ -16,6 +18,7 @@ VALUES('Lab',
 	    'Jan 2020',
 	    'NA');
 
+/* Merge statment example*/
 
 MERGE INTO OAO_DEVELOPMENT.summary_repo_example  SR
 USING OAO_DEVELOPMENT.merge_example SOURCE_TABLE
@@ -42,6 +45,8 @@ VALUES( SOURCE_TABLE."SITE",
         SOURCE_TABLE."UPDATE_TIME",
         SOURCE_TABLE."UPDATE_USER",
         SOURCE_TABLE."PREMIER_REPORTING_PERIOD");
+
+/* Insert all statment example*/
 	
 INSERT ALL 
 INTO OAO_DEVELOPMENT.summary_repo_example (SERVICE,
