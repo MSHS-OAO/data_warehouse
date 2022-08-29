@@ -19,8 +19,14 @@ VALUES('Lab',
 	    'NA');
 	    
 /* Insert statment from select example*/
-/* Note on DBMS_RANDOM.RANDOM : https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:1859804900346710586
-				https://datacadamia.com/lang/plsql/dbms_random */
+/* 
+Note on DBMS_RANDOM.RANDOM : https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:1859804900346710586
+				https://datacadamia.com/lang/plsql/dbms_random 
+Example:
+SELECT SITE, SERVICE, MONTH, DBMS_RANDOM.RANDOM AS RANDOM_COL
+FROM  oao_development.summary_repo_example
+ORDER BY  RANDOM_COL;
+*/
 
 INSERT INTO OAO_DEVELOPMENT.merge_example
 SELECT *
