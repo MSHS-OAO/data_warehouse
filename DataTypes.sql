@@ -13,7 +13,7 @@ The precision is the number of digits in a number. It ranges from 1 to 38.
 The scale is the number of digits to the right of the decimal point in a number. It ranges from -84 to 127.
 For example, the number 1234.56 has a precision of 6 and a scale of 2. So to store this number, you need NUMBER(6,2) 
 
-We can force Oracle to rounded of to nearest tens,hundreds,thousands place. To do that, You can specify negetive precision
+We can force Oracle to rounded of to nearest tens,hundreds,thousands place. To do that, You can specify negetive scale.
 */
 
 CREATE TABLE number_demo ( 
