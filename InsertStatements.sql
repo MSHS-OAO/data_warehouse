@@ -1,5 +1,4 @@
-/* Basic insert statment*/
-
+-- BASIC INSERT STATEMENT /SLIDE 12
 INSERT INTO OAO_DEVELOPMENT.summary_repo_example
 (SERVICE,
 SITE,
@@ -18,7 +17,7 @@ VALUES('Lab',
 	    'Jan 2020',
 	    'NA');
 	    
-/* Insert statment from select example*/
+-- Insert statment from select example / SLIDE 12
 /* 
 Note on DBMS_RANDOM.RANDOM : https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:1859804900346710586
 				https://datacadamia.com/lang/plsql/dbms_random 
@@ -36,8 +35,33 @@ FROM   (
     ORDER BY DBMS_RANDOM.RANDOM)
 WHERE  rownum < 21;
 	  
+-- Insert all statment example / SLIDE 13
+	
+INSERT ALL 
+INTO OAO_DEVELOPMENT.summary_repo_example (SERVICE,
+					   SITE,
+					   MONTH,
+				   	   METRIC_NAME_SUBMITTED,
+					   VALUE)
+VALUES('Lab',
+       'MSB',
+        TO_DATE('2020-01-01','YYYY-MM-DD'),
+       'Troponin (<=50 min)',
+	0.8913)
+INTO OAO_DEVELOPMENT.merge_example (SERVICE,
+					   SITE,
+					   MONTH,
+				   	   METRIC_NAME_SUBMITTED,
+					   VALUE)
+VALUES('Lab',
+       'MSB',
+        TO_DATE('2020-01-01','YYYY-MM-DD'),
+       'Troponin (<=50 min)',
+	0.8913)					
+SELECT * FROM dual; 
 
-/* Merge statment example*/
+
+-- Merge statment example / SLIDE 15
 
 MERGE INTO OAO_DEVELOPMENT.summary_repo_example  SR
 USING OAO_DEVELOPMENT.merge_example SOURCE_TABLE
@@ -65,27 +89,3 @@ VALUES( SOURCE_TABLE."SITE",
         SOURCE_TABLE."UPDATE_USER",
         SOURCE_TABLE."PREMIER_REPORTING_PERIOD");
 
-/* Insert all statment example*/
-	
-INSERT ALL 
-INTO OAO_DEVELOPMENT.summary_repo_example (SERVICE,
-					   SITE,
-					   MONTH,
-				   	   METRIC_NAME_SUBMITTED,
-					   VALUE)
-VALUES('Lab',
-       'MSB',
-        TO_DATE('2020-01-01','YYYY-MM-DD'),
-       'Troponin (<=50 min)',
-	0.8913)
-INTO OAO_DEVELOPMENT.merge_example (SERVICE,
-					   SITE,
-					   MONTH,
-				   	   METRIC_NAME_SUBMITTED,
-					   VALUE)
-VALUES('Lab',
-       'MSB',
-        TO_DATE('2020-01-01','YYYY-MM-DD'),
-       'Troponin (<=50 min)',
-	0.8913)					
-SELECT * FROM dual; 
