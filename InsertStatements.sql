@@ -42,22 +42,26 @@ INTO OAO_DEVELOPMENT.summary_repo_example (SERVICE,
 					   SITE,
 					   MONTH,
 				   	   METRIC_NAME_SUBMITTED,
-					   VALUE)
+					   VALUE,
+                       			   PREMIER_REPORTING_PERIOD)
 VALUES('Lab',
        'MSB',
         TO_DATE('2020-01-01','YYYY-MM-DD'),
        'Troponin (<=50 min)',
-	0.8913)
+	0.8913,
+       'Jan 2020')
 INTO OAO_DEVELOPMENT.merge_example (SERVICE,
 					   SITE,
 					   MONTH,
 				   	   METRIC_NAME_SUBMITTED,
-					   VALUE)
+					   VALUE,
+                       			   PREMIER_REPORTING_PERIOD)
 VALUES('Lab',
        'MSB',
         TO_DATE('2020-01-01','YYYY-MM-DD'),
        'Troponin (<=50 min)',
-	0.8913)					
+	0.8913,
+       'Jan 2020')				
 SELECT * FROM dual; 
 
 
