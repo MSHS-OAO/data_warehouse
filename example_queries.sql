@@ -1,47 +1,3 @@
---- select all records from a specified table
-SELECT * FROM OAO_DEVELOPMENT.summary_repo_example;
-SELECT * FROM OAO_DEVELOPMENT.bsc_mapping_example;
-
---- select all records from a specified table that meet a given condition
-SELECT * FROM OAO_DEVELOPMENT.summary_repo_example
-WHERE site = 'MSH' OR site = 'MSBI';
-
---- select specific columns from a specified table that meet a given condition using table alias 
-SELECT a.service, a.site, a.premier_reporting_period, a.metric_name_submitted, a.value 
-FROM OAO_DEVELOPMENT.summary_repo_example a
-WHERE a.site = 'MSH' OR a.site = 'MSBI';
-
---- join specific columns from two tables
-SELECT a.*, b.GENERAL_GROUP, b.DISPLAY_ORDER, b.REPORTING_TAB 
-FROM OAO_DEVELOPMENT.SUMMARY_REPO_EXAMPLE a
-LEFT JOIN OAO_DEVELOPMENT.BSC_MAPPING_EXAMPLE b 
-ON a.SERVICE = b.SERVICE AND a.METRIC_NAME_SUBMITTED = b.METRIC_NAME_SUBMITTED;
-
---- use nested queries to filter and join two tables
-Select b.*, c.GENERAL_GROUP, c.DISPLAY_ORDER, c.REPORTING_TAB
-FROM(
-SELECT a.*
-FROM OAO_DEVELOPMENT.SUMMARY_REPO_EXAMPLE a
-WHERE a.site = 'MSBI' OR a.site = 'MSH') b
-LEFT JOIN OAO_DEVELOPMENT.BSC_MAPPING_EXAMPLE c 
-ON b.SERVICE = c.SERVICE AND b.METRIC_NAME_SUBMITTED = c.METRIC_NAME_SUBMITTED;
-
---- store query as view
-CREATE VIEW msh_msbi_lab AS
-SELECT b.*, c.GENERAL_GROUP, c.DISPLAY_ORDER, c.REPORTING_TAB
-FROM(
-SELECT a.*
-FROM OAO_DEVELOPMENT.SUMMARY_REPO_EXAMPLE a
-WHERE a.site = 'MSBI' OR a.site = 'MSH') b
-LEFT JOIN OAO_DEVELOPMENT.BSC_MAPPING_EXAMPLE c 
-ON b.SERVICE = c.SERVICE AND b.METRIC_NAME_SUBMITTED = c.METRIC_NAME_SUBMITTED;
-
--- select all records from view that we just created. 
-SELECT * FROM msh_msbi_lab;
-
---- drop view for presentation purposes
-DROP VIEW msh_msbi_lab;
-
 --- insert statements start here
 /* Basic insert statment*/
 
@@ -135,4 +91,46 @@ VALUES('Lab',
 	0.8913)					
 SELECT * FROM dual; 
 
+--- select all records from a specified table
+SELECT * FROM OAO_DEVELOPMENT.summary_repo_example;
+SELECT * FROM OAO_DEVELOPMENT.bsc_mapping_example;
 
+--- select all records from a specified table that meet a given condition
+SELECT * FROM OAO_DEVELOPMENT.summary_repo_example
+WHERE site = 'MSH' OR site = 'MSBI';
+
+--- select specific columns from a specified table that meet a given condition using table alias 
+SELECT a.service, a.site, a.premier_reporting_period, a.metric_name_submitted, a.value 
+FROM OAO_DEVELOPMENT.summary_repo_example a
+WHERE a.site = 'MSH' OR a.site = 'MSBI';
+
+--- join specific columns from two tables
+SELECT a.*, b.GENERAL_GROUP, b.DISPLAY_ORDER, b.REPORTING_TAB 
+FROM OAO_DEVELOPMENT.SUMMARY_REPO_EXAMPLE a
+LEFT JOIN OAO_DEVELOPMENT.BSC_MAPPING_EXAMPLE b 
+ON a.SERVICE = b.SERVICE AND a.METRIC_NAME_SUBMITTED = b.METRIC_NAME_SUBMITTED;
+
+--- use nested queries to filter and join two tables
+Select b.*, c.GENERAL_GROUP, c.DISPLAY_ORDER, c.REPORTING_TAB
+FROM(
+SELECT a.*
+FROM OAO_DEVELOPMENT.SUMMARY_REPO_EXAMPLE a
+WHERE a.site = 'MSBI' OR a.site = 'MSH') b
+LEFT JOIN OAO_DEVELOPMENT.BSC_MAPPING_EXAMPLE c 
+ON b.SERVICE = c.SERVICE AND b.METRIC_NAME_SUBMITTED = c.METRIC_NAME_SUBMITTED;
+
+--- store query as view
+CREATE VIEW msh_msbi_lab AS
+SELECT b.*, c.GENERAL_GROUP, c.DISPLAY_ORDER, c.REPORTING_TAB
+FROM(
+SELECT a.*
+FROM OAO_DEVELOPMENT.SUMMARY_REPO_EXAMPLE a
+WHERE a.site = 'MSBI' OR a.site = 'MSH') b
+LEFT JOIN OAO_DEVELOPMENT.BSC_MAPPING_EXAMPLE c 
+ON b.SERVICE = c.SERVICE AND b.METRIC_NAME_SUBMITTED = c.METRIC_NAME_SUBMITTED;
+
+-- select all records from view that we just created. 
+SELECT * FROM msh_msbi_lab;
+
+--- drop view for presentation purposes
+DROP VIEW msh_msbi_lab;
