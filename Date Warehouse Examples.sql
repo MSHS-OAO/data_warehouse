@@ -58,6 +58,7 @@ WHEN SERVICE = 'New Line2' OR  SERVICE = 'New Line3'
 THEN INTO OAO_DEVELOPMENT.MERGE_EXAMPLE 
 SELECT * FROM OAO_DEVELOPMENT.MERGE_EXAMPLE;
 
+
 -- Delete statment
 DELETE FROM OAO_DEVELOPMENT.MERGE_EXAMPLE WHERE SERVICE IN ('New Line3', 'New Line4');
 
@@ -107,3 +108,35 @@ VALUES( SOURCE_TABLE."SITE",
         SOURCE_TABLE."UPDATE_USER",
         SOURCE_TABLE."PREMIER_REPORTING_PERIOD",
         SOURCE_TABLE."MONTH");
+        
+       
+       
+       
+-- Example 5.1 answer
+SELECT * FROM SUMMARY_REPO_EXAMPLE;
+
+-- Example 5.2 answer
+SELECT * FROM SUMMARY_REPO_EXAMPLE
+WHERE site = 'MSH' OR site = 'MSBI';
+
+-- Example 5.3 answer 
+SELECT a.service, a.site, a.premier_reporting_period, a.metric_name_submitted, a.value 
+FROM SUMMARY_REPO_EXAMPLE a
+WHERE a.site = 'MSH' OR a.site = 'MSBI';
+
+-- Example 5.4 answer
+SELECT a.*, b.general_group, b.display_order, b.reporting_tab 
+FROM SUMMARY_REPO_EXAMPLE a
+LEFT JOIN OAO_DEVELOPMENT.BSC_MAPPING_EXAMPLE b 
+ON a.service = b.service AND a.metric_name_submitted = b.metric_name_submitted;
+
+-- Example 6.1 answer
+CREATE VIEW summary_repo_mapping AS
+SELECT a.*, b.general_group, b.display_order, b.reporting_tab 
+FROM OAO_DEVELOPMENT.SUMMARY_REPO_EXAMPLE a
+LEFT JOIN OAO_DEVELOPMENT.BSC_MAPPING_EXAMPLE b 
+ON a.service = b.service AND a.metric_name_submitted = b.metric_name_submitted;
+
+-- Example 6.2
+SELECT * FROM SUMMARY_REPO_MAPPING a
+WHERE a.service = 'test';
