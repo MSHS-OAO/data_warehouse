@@ -16,6 +16,7 @@ CREATE TABLE SUMMARY_REPO_EXAMPLE
         Month,
         Metric_Name_Submitted
         )
+    ENABLE
 )
 
 --Grant Select Permisions for Merge_Example table run as OAO_Developement user
