@@ -20,8 +20,8 @@ CREATE TABLE SUMMARY_REPO_EXAMPLE
 )
 
 --Grant Select Permisions for Merge_Example table run as OAO_Developement user
-GRANT SELECT on MERGE_EXAMPLE to servig01, webera04, lenang01, mieslm01, eggerd02, aghaer01, tommad01, nevink01
-GRANT SELECT on BSC_MAPPING_EXAMPLE to servig01, webera04, lenang01, mieslm01, eggerd02, aghaer01, tommad01, nevink01
+GRANT SELECT on MERGE_EXAMPLE to servig01, webera04, lenang01, mieslm01, eggerd02, aghaer01, tommad01, nevink01, villea04
+GRANT SELECT on BSC_MAPPING_EXAMPLE to servig01, webera04, lenang01, mieslm01, eggerd02, aghaer01, tommad01, nevink01, villea04
 
 --Example 2.1 Answer
 INSERT ALL 
