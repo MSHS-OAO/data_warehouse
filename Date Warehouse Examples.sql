@@ -120,25 +120,30 @@ SELECT * FROM SUMMARY_REPO_EXAMPLE;
 
 -- Example 5.2 answer
 SELECT * FROM SUMMARY_REPO_EXAMPLE
-WHERE site = 'MSH' OR site = 'MSBI';
+WHERE site = 'MSH' OR site = 'MSQ';
 
 -- Example 5.3 answer 
 SELECT a.service, a.site, a.premier_reporting_period, a.metric_name_submitted, a.value 
 FROM SUMMARY_REPO_EXAMPLE a
-WHERE a.site = 'MSH' OR a.site = 'MSBI';
+WHERE a.site = 'MSH' OR a.site = 'MSQ';
 
 -- Example 5.4 answer
 SELECT a.*, b.general_group, b.display_order, b.reporting_tab 
 FROM SUMMARY_REPO_EXAMPLE a
 LEFT JOIN OAO_DEVELOPMENT.BSC_MAPPING_EXAMPLE b 
-ON a.service = b.service AND a.metric_name_submitted = b.metric_name_submitted;
+ON a.service = b.service AND a.metric_name_submitted = b.metric_name_submitted
+WHERE a.site = 'MSH' OR a.site = 'MSQ';
 
 -- Example 6.1 answer
 CREATE VIEW summary_repo_mapping AS
 SELECT a.*, b.general_group, b.display_order, b.reporting_tab 
-FROM OAO_DEVELOPMENT.SUMMARY_REPO_EXAMPLE a
+FROM SUMMARY_REPO_EXAMPLE a
 LEFT JOIN OAO_DEVELOPMENT.BSC_MAPPING_EXAMPLE b 
-ON a.service = b.service AND a.metric_name_submitted = b.metric_name_submitted;
+ON a.service = b.service AND a.metric_name_submitted = b.metric_name_submitted
+WHERE a.site = 'MSH' OR a.site = 'MSQ';
+
+-- View query as virtual table (view)
+SELECT * FROM summary_repo_mapping;
 
 -- Example 6.2
 SELECT * FROM SUMMARY_REPO_MAPPING a
