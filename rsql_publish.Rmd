@@ -1,0 +1,10 @@
+---
+title: "rsql test"
+output: html_document
+date: "2022-11-17"
+---
+
+```{r source}
+source(rsql_example.R)
+```
+
